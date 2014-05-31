@@ -8,22 +8,23 @@ var auth = require('./auth');
 comm.version(require('./package.json').version);
 comm.usage('command [options] [arguments]');
 
+comm.command('add <address>', 'bookmark a URL')
+comm.command('tag [<tag> <tag>...]', 'list tags or lookup bookmarks by <tags>')
+comm.command('search <query>', 'lookup bookmarks by <query>')
+
 comm
 	.command('login')
-	.description('Starts a Log In process to omg, regardless of current log in status')
+	.description('log in to your omg account')
 	.action(auth.logIn);
 
 comm
 	.command('logout')
-	.description('Logs out of omg')
+	.description('terminate your login session')
 	.action(auth.logOut);
 
 comm
 	.command('signup')
-	.description('Registers a new omg account')
+	.description('sign up for a new omg account')
 	.action(auth.signUp);
-
-comm.command('add <address>', 'Bookmark a URL')
-comm.command('tag <tag>', 'View URLs with <tag>')
 
 comm.parse(process.argv);
