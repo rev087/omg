@@ -1,5 +1,7 @@
 ![logo](logo.png?raw=true)
 
+#omg
+
 __omg__ is a command-line utility to manage bookmarks with tag support, using the [Parse](http://parse.com) backend-as-a-service for storage and sync.
 
 It's a work in progress, and right now it only stores the bookmarks with no way to retrieve them.
