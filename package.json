@@ -2,7 +2,7 @@
   "name": "omg-bookmarks",
   "version": "0.0.0",
   "description": "Command-line client for the OMG! bookmark manager",
-  "main": "omg",
+  "bin": {"omg": "./omg"},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
