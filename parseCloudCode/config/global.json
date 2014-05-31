@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "omg"
+        }, 
+        "omg": {
+            "applicationId": "DlpI4Ux0dRMxGE0WrzRV5cK1oz2MS5iefy3YSr47", 
+            "masterKey": "fpmboSEQ3EzBrPsDoHOVvomfZ8jZGYHYRwciBriy"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}

@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+var Parse = require('parse').Parse,
+		comm = require('commander');
+require('colors');
+
+var auth = require('./auth');
+
+comm.version(require('./package.json').version);
+comm.usage('command [options] [arguments]');
+
+comm
+	.command('login')
+	.description('Starts a Log In process to omg, regardless of current log in status')
+	.action(auth.logIn);
+
+comm
+	.command('logout')
+	.description('Logs out of omg')
+	.action(auth.logOut);
+
+comm
+	.command('signup')
+	.description('Registers a new omg account')
+	.action(auth.signUp);
+
+comm.command('add <address>', 'Bookmark a URL')
+comm.command('tag <tag>', 'View URLs with <tag>')
+
+comm.parse(process.argv);

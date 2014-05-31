@@ -1,0 +1,34 @@
+{
+  "name": "omg-bookmarks",
+  "version": "0.0.0",
+  "description": "Command-line client for the OMG! bookmark manager",
+  "main": "omg",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rev087/omg"
+  },
+  "keywords": [
+    "bookmarks",
+    "command-line",
+    "cli"
+  ],
+  "author": "Bruno Daniel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rev087/omg/issues"
+  },
+  "homepage": "https://github.com/rev087/omg",
+  "dependencies": {
+    "commander": "~2.2.0",
+    "colors": "~0.6.2",
+    "inquirer": "~0.5.1",
+    "parse": "~1.2.17",
+    "request": "~2.36.0",
+    "cheerio": "~0.16.0",
+    "validator": "~3.12.0",
+    "user-settings": "~0.1.4"
+  }
+}
