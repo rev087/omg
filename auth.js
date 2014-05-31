@@ -21,13 +21,16 @@ function logIn(fn) {
 	var inqUser = {name:'username', message:'username: '};
 	var inqPass = {name:'password', message:'password: ', type:'password'};
 	inquirer.prompt([inqUser, inqPass], function(input) {
+		spinner.start('Authenticating'.grey);
 		Parse.User.logIn(input.username, input.password, {
 			success: function(user) {
+				spinner.stop();
 				console.log('ACCESS GRANTED'.green);
 				usr.set('sessionToken', user.getSessionToken());
 				fn(user);
 			},
 			error: function(user, error) {
+				spinner.stop();
 				if (error.code === 101) {
 					console.error('ACCESS DENIED'.red.bold);
 					process.exit(1);
@@ -50,13 +53,16 @@ function signUp(fn) {
 		user.set('username', input.username);
 		user.set('password', input.password);
 		user.set('email', input.email);
+		spinner.start('Signing up'.grey);
 		user.signUp(null, {
 			success: function(user) {
+				spinner.stop();
 				console.log('ACCESS GRANTED'.green);
 				usr.set('sessionToken', user.getSessionToken());
 				fn(user);
 			},
 			error: function(user, error) {
+				spinner.stop();
 				console.error((error.message).red);
 				process.exit(1);
 			}
