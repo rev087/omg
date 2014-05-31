@@ -5,7 +5,8 @@ var Parse = require('parse').Parse,
 
 		auth = require('./auth'),
 		models = require('./models'),
-		spinner = require('./spinner');
+		spinner = require('./spinner'),
+		list = require('./list');
 
 require('colors');
 
@@ -21,11 +22,15 @@ auth.session(function(user) {
 	if (!comm.args.length) {
 		spinner.start('Fetching tags'.grey);
 		var query = new Parse.Query(models.Tag);
+		query.ascending('name');
 		query.find().then(function(tags) {
 			spinner.stop();
+			console.log(tags.length + ' tags found');
 			for (var i = 0; i < tags.length; i++) {
-				console.log(tags[i].get('name').green);
+				if (i > 0) process.stdout.write(', '.grey);
+				process.stdout.write(tags[i].get('name').green);
 			};
+			console.log('');
 		}, function(error) {
 			spinner.stop();
 			console.error(error.message.red);
@@ -40,31 +45,7 @@ auth.session(function(user) {
 		query.ascending('title');
 		query.find().then(function(bookmarks) {
 			spinner.stop();
-			console.log(
-				bookmarks.length + ' bookmarks matching ' +
-				comm.args.join(', ').yellow + ':'.white +
-				'\n'
-			);
-			for (var i = 0; i < bookmarks.length; i++) {
-				var b = bookmarks[i];
-				console.log(
-					((i+1)+'  ').white +
-					b.get('title').blue.bold + '  ' +
-					b.get('url').green + '\n   ' +
-					('#' + b.get('tags').join(', #')).grey +
-					'\n'
-				);
-			};
-			var inqNum = {
-				name:'num',
-				message:'Open bookmark number:',
-				validate: validNum.bind(null, bookmarks.length)
-			};
-			inquirer.prompt([inqNum], function(input) {
-				var bm = bookmarks[input.num-1];
-				console.log(('Opening ' + bm.get('title') + '...').grey);
-				open(bm.get('url'));
-			});
+			list(bookmarks, comm.args.join(', '));
 		}, function(error) {
 			spinner.stop();
 			console.error(error.message.red);

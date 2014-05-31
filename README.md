@@ -4,7 +4,8 @@
 
 __omg__ is a command-line utility to manage bookmarks with tag support, using the [Parse](http://parse.com) backend-as-a-service for storage and sync.
 
-It's a work in progress, and right now it only stores the bookmarks with no way to retrieve them.
+
+__WARNING:__ This is a work in progress, so please don't rely on it yet. If you really like to use it, my suggestion is to use your own Parse keys in the `models.js` file so you're in control of your data.
 
 ## Usage
 
@@ -16,6 +17,9 @@ $ omg add http://google.com
 
 # Listing your tags
 $ omg tag
+
+# Lookup bookmarks by tag(s)
+$ omg tag node angular express
 
 # Using `omg add` for the first time in a computer will walk you through the
 # sign-up/log-in process, but you can manage authentication manually:
