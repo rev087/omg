@@ -1,4 +1,5 @@
-var inquirer = require('inquirer');
+var inquirer = require('inquirer'),
+		open = require('open');
 require('colors');
 
 function validNum(length, input) {

@@ -3,7 +3,7 @@ var Parse = require('parse').Parse,
 		comm = require('commander');
 require('colors');
 
-var auth = require('./auth');
+var auth = require(__dirname + '/auth');
 
 comm.version(require('./package.json').version);
 comm.usage('command [options] [arguments]');

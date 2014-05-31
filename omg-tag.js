@@ -1,13 +1,12 @@
 var Parse = require('parse').Parse,
 		comm = require('commander'),
 		inquirer = require('inquirer'),
-		open = require('open'),
 
-		auth = require('./auth'),
-		models = require('./models'),
-		spinner = require('./spinner'),
-		list = require('./list');
-
+		auth = require(__dirname + '/auth'),
+		models = require(__dirname + '/models'),
+		spinner = require(__dirname + '/spinner'),
+		list = require(__dirname + '/list');
+		
 require('colors');
 
 comm.parse(process.argv);

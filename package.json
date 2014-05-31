@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Command-line client for the OMG! bookmark manager",
   "bin": {
-    "omg": "./omg"
+    "omg": "./omg.js",
+    "omg-search": "./omg-search.js",
+    "omg-add": "./omg-add.js",
+    "omg-tag": "./omg-tag.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

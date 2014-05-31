@@ -2,8 +2,8 @@ var Parse = require('parse').Parse,
 		usr = require('user-settings').file('.omgconfig'),
 		inquirer = require('inquirer'),
 		validator = require('validator'),
-		models = require('./models'),
-		spinner = require('./spinner');
+		models = require(__dirname + '/models'),
+		spinner = require(__dirname + '/spinner');
 require('colors');
 
 function noop() {}

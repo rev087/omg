@@ -5,10 +5,10 @@ var Parse = require('parse').Parse,
 		validator = require('validator'),
 		cheerio = require('cheerio');
 
-var models = require('./models'),
-		auth = require('./auth'),
-		spinner = require('./spinner'),
-		tagger = require('./tagger');
+var models = require(__dirname + '/models'),
+		auth = require(__dirname + '/auth'),
+		spinner = require(__dirname + '/spinner'),
+		tagger = require(__dirname + '/tagger');
 
 comm.parse(process.argv);
 
