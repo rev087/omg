@@ -1,8 +1,7 @@
 var Parse = require('parse').Parse,
 		comm = require('commander'),
 		inquirer = require('inquirer'),
-		exec = require('child_process').exec,
-		spawn = require('child_process').spawn,
+		open = require('open'),
 
 		auth = require('./auth'),
 		models = require('./models'),
@@ -42,7 +41,6 @@ auth.session(function(user) {
 		query.find().then(function(bookmarks) {
 			spinner.stop();
 			console.log(
-				'\n' +
 				bookmarks.length + ' bookmarks matching ' +
 				comm.args.join(', ').yellow + ':'.white +
 				'\n'
@@ -63,8 +61,9 @@ auth.session(function(user) {
 				validate: validNum.bind(null, bookmarks.length)
 			};
 			inquirer.prompt([inqNum], function(input) {
-				var url = bookmarks[input.num-1].get('url');
-				spawn('open', [url]);
+				var bm = bookmarks[input.num-1];
+				console.log(('Opening ' + bm.get('title') + '...').grey);
+				open(bm.get('url'));
 			});
 		}, function(error) {
 			spinner.stop();

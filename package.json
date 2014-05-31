@@ -29,6 +29,7 @@
     "request": "~2.36.0",
     "cheerio": "~0.16.0",
     "validator": "~3.12.0",
-    "user-settings": "~0.1.4"
+    "user-settings": "~0.1.4",
+    "open": "0.0.5"
   }
 }
