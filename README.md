@@ -18,8 +18,12 @@ $ omg add http://google.com
 # Listing your tags
 $ omg tag
 
-# Lookup bookmarks by tag(s)
+# Lookup bookmarks by tag(s), space-separated. If your tags have spaces, use
+# quotes or escape them
 $ omg tag node angular express
+
+# Search bookmarks by title substring, case insensitive
+$ omg search velociraptors
 
 # Using `omg add` for the first time in a computer will walk you through the
 # sign-up/log-in process, but you can manage authentication manually:
