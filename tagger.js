@@ -12,7 +12,7 @@ function printTags(tags) {
 	console.log(str);
 }
 
-function setBookmarkTags(bookmark) {
+function selectTags(bookmark) {
 	var promise = new Parse.Promise();
 	promptForTags(bookmark, function(tags) {
 		bookmark.set('tags', tags);
@@ -25,11 +25,23 @@ function setBookmarkTags(bookmark) {
 
 function promptForTags(bookmark, fn) {	
 
-	function completeTags(line) {
-		var tags = ['node', 'angular', 'express', 'rethinkdb', 'redis', 'elasticsearch'];
+	var knownTags = [];
 
-		var hits = tags.filter(function(tag) {
-			return tag.indexOf(line) === 0;
+	var query = new Parse.Query(models.Tag);
+	query.find().then(function(objects) {
+		for (var i = 0; i < objects.length; i++) {
+			knownTags.push(objects[i].get('name'));
+		};
+	}, function(err) {
+		console.error(err.message.red);
+		process.exit(1);
+	});
+
+	function completeTags(line) {
+
+
+		var hits = knownTags.filter(function(knownTag) {
+			return knownTag.indexOf(line) === 0;
 		});
 
 		return [hits, line];
@@ -41,8 +53,11 @@ function promptForTags(bookmark, fn) {
 		completer: completeTags
 	});
 
-	var tags = [];
+	var tags = bookmark.get('tags') || [];
 	console.log('Add tags, one per line, empty to finish, Tab to autocomplete, "-" to remove last');
+
+	printTags(tags);
+
 	rl.setPrompt('#'.green, 1);
 	rl.prompt();
 
@@ -65,4 +80,4 @@ function promptForTags(bookmark, fn) {
 	});
 }
 
-module.exports = {prompt: promptForTags, setTags: setBookmarkTags};
+module.exports = {prompt: promptForTags, selectTags: selectTags};

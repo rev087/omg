@@ -45,7 +45,7 @@ function add(user, addr) {
 					bookmark.set('url', addr);
 				}
 				bookmark.set('title', title);
-			  return tagger.setTags(bookmark);
+			  return tagger.selectTags(bookmark);
 			}).then(function(bookmark) {
 				console.log('OK'.green.bold);
 			});
