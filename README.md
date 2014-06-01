@@ -4,6 +4,7 @@
 
 __omg__ is a command-line utility to manage bookmarks with tag support, using the [Parse](http://parse.com) backend-as-a-service for storage and sync.
 
+![screenshot](screenshot.png?raw=true)
 
 __WARNING:__ This is a work in progress, so please don't rely on it yet as I might need to empty the database. If you really would like to use it, my suggestion is to use your own Parse keys in the `models.js` file so you're in control of your data.
 
