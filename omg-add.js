@@ -52,7 +52,9 @@ function add(user, addr) {
 		spinner.stop();
 	  if (!error && response.statusCode === 200) {
 	  	var $ = cheerio.load(body),
-	  			title = $('title').text()
+	  			title = $('title').text(),
+	  			meta = $('meta[name][content]');
+	  	
 
 	  	console.log(
 	  		'URL'.blue.bold + ': '.grey +
@@ -60,6 +62,14 @@ function add(user, addr) {
 	  		'\nTitle'.blue.bold + ': '.grey +
 	  		title.green
   		);
+
+  		for (var m = 0; m < meta.length; m++) {
+  			console.log(
+  				'Meta'.blue.bold + '-'.grey +
+	  			meta.eq(m).attr('name').blue.bold + ': '.grey +
+	  			meta.eq(m).attr('content').green
+				);
+  		};
 
   		fetchBookmark(user, addr, title);
 

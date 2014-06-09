@@ -80,4 +80,8 @@ function promptForTags(bookmark, fn) {
 	});
 }
 
-module.exports = {prompt: promptForTags, selectTags: selectTags};
+module.exports = {
+	prompt: promptForTags,
+	selectTags: selectTags,
+	prettyPrint: printTags
+};
